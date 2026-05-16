@@ -15,7 +15,7 @@ WavetableLookAndFeel::WavetableLookAndFeel()
     setColour(juce::Slider::textBoxOutlineColourId, bgDark);
 
     setColour(juce::Label::textColourId, textColor);
-    setColour(juce::Button::buttonColourId, cyan);
+    setColour(juce::TextButton::buttonColourId, cyan);
     setColour(juce::ComboBox::backgroundColourId, bgPanel);
     setColour(juce::ComboBox::textColourId, textColor);
     setColour(juce::ComboBox::outlineColourId, cyan);

@@ -372,7 +372,7 @@ WavetableSynthAudioProcessorEditor::WavetableSynthAudioProcessorEditor(
     };
 
     initButton.onClick = [this] {
-        p.apvts.state = juce::ValueTree("Parameters");
+        processor.apvts.state = juce::ValueTree("Parameters");
         wtDisplay.updateFromPosition(0.0f);
         adsrEditor.updateFromParams();
         lfo1Display.updateFromParams();
