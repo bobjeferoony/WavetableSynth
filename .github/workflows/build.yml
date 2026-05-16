@@ -18,10 +18,10 @@ jobs:
           echo "JUCE_DIR=${{ github.workspace }}\JUCE-8.0.12" >> $env:GITHUB_ENV
 
       - name: Configure CMake
-        run: cmake -B Build -G "Visual Studio 17 2022" -DJUCE_DIR="$env:JUCE_DIR"
+        run: cmake -B Build -G "Visual Studio 17 2022" -A x64 -DJUCE_DIR="$env:JUCE_DIR"
 
       - name: Build
-        run: cmake --build Build --config Release
+        run: cmake --build Build --config Release --verbose
 
       - name: Upload VST3
         uses: actions/upload-artifact@v4
