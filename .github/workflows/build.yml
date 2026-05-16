@@ -24,12 +24,25 @@ jobs:
         run: Get-ChildItem -Path Source -Filter "JuceHeader.h" -ErrorAction SilentlyContinue | Select-Object FullName, Length
 
       - name: Build
-        run: cmake --build Build --config Release
+        shell: bash
+        run: |
+          cmake --build Build --config Release --verbose 2>&1 | tee build_output.txt; exit ${PIPESTATUS[0]}
 
       - name: List build output
         run: Get-ChildItem -Path Build -Recurse -Depth 4 -Filter "*.vst3" -ErrorAction SilentlyContinue | Select-Object FullName
 
+      - name: Upload build logs always
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: |
+            Build/CMakeFiles/CMakeOutput.log
+            Build/CMakeFiles/CMakeError.log
+            build_output.txt
+
       - name: Upload VST3
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: WavetableSynth-vst3
