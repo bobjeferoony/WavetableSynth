@@ -56,6 +56,8 @@ target_link_libraries(WavetableSynth PRIVATE
     juce::juce_gui_extra
 )
 
+target_include_directories(WavetableSynth PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Source)
+
 target_compile_definitions(WavetableSynth PRIVATE
     JucePlugin_Name="WavetableSynth"
     JucePlugin_Desc="A wavetable synthesizer with modulation"
