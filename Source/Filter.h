@@ -4,7 +4,7 @@
 class Filter
 {
 public:
-    enum Type { LowPass = 0, HighPass, BandPass };
+    using Type = juce::dsp::StateVariableTPTFilter<float>::Type;
 
     Filter();
     ~Filter() = default;
@@ -19,13 +19,9 @@ public:
     float getCutoff() const { return cutoff; }
 
 private:
-    Type type = LowPass;
+    juce::dsp::StateVariableTPTFilter<float> svf;
+    double sampleRate = 44100.0;
+    Type type = Type::lowPass;
     float cutoff = 1000.0f;
     float resonance = 0.0f;
-
-    juce::dsp::StateVariableFilter::Filter<float> svf;
-    double sampleRate = 44100.0;
-    bool needsUpdate = true;
-
-    void updateFilter();
 };

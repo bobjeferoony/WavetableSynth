@@ -62,7 +62,8 @@ private:
     WavetableLookAndFeel lnf;
 };
 
-class WavetableSynthAudioProcessorEditor : public juce::AudioProcessorEditor
+class WavetableSynthAudioProcessorEditor : public juce::AudioProcessorEditor,
+                                           private juce::Timer
 {
 public:
     WavetableSynthAudioProcessorEditor(WavetableSynthAudioProcessor&);
@@ -70,7 +71,7 @@ public:
 
     void paint(juce::Graphics& g) override;
     void resized() override;
-    void timerCallback(int timerID) override;
+    void timerCallback() override;
 
 private:
     WavetableSynthAudioProcessor& processor;

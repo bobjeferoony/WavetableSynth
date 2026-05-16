@@ -533,7 +533,7 @@ void WavetableSynthAudioProcessorEditor::resized()
     }
 }
 
-void WavetableSynthAudioProcessorEditor::timerCallback(int /*timerID*/)
+void WavetableSynthAudioProcessorEditor::timerCallback()
 {
     adsrEditor.updateFromParams();
     lfo1Display.updateFromParams();
@@ -548,7 +548,9 @@ void WavetableSynthAudioProcessorEditor::initSlider(juce::Slider& slider,
     slider.setColour(juce::Slider::textBoxTextColourId, lnf.textColor);
     slider.setColour(juce::Slider::textBoxBackgroundColourId, lnf.bgDark);
     slider.setColour(juce::Slider::textBoxOutlineColourId, lnf.bgDark);
-    slider.setRotaryParameters(2.0f, 7.0f, false);
+    slider.setRotaryParameters(juce::MathConstants<float>::pi * 0.75f,
+                               juce::MathConstants<float>::pi * 2.25f,
+                               true);
     slider.setName(label);
     addAndMakeVisible(slider);
 }
