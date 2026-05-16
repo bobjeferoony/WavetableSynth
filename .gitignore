@@ -1,0 +1,9 @@
+Build*/
+Build-*/
+juce-*/
+JUCE/
+*.user
+*.suo
+.vs/
+.DS_Store
+Thumbs.db
