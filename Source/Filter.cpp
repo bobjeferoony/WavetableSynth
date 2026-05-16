@@ -21,7 +21,14 @@ void Filter::process(juce::AudioBuffer<float>& buffer, int numSamples)
 void Filter::setType(Type newType)
 {
     type = newType;
-    svf.setType(newType);
+
+    static const juce::dsp::StateVariableTPTFilterType mappedTypes[] = {
+        juce::dsp::StateVariableTPTFilterType::lowpass,
+        juce::dsp::StateVariableTPTFilterType::highpass,
+        juce::dsp::StateVariableTPTFilterType::bandpass
+    };
+
+    svf.setType(mappedTypes[static_cast<int>(type)]);
 }
 
 void Filter::setCutoff(float newCutoffHz)
