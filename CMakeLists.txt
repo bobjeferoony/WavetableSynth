@@ -64,6 +64,7 @@ target_compile_definitions(WavetableSynth PRIVATE
     JucePlugin_Manufacturer="YourCompany"
     JucePlugin_ManufacturerCode=0x596F7572
     JucePlugin_PluginCode=0x57615379
+    JUCE_IGNORE_VST3_MISMATCHED_PARAMETER_ID_WARNING=1
 )
 
 if(MSVC)
